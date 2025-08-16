@@ -1,11 +1,229 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Krishna-Singh — Portfolio</title>
+  <meta name="description" content="Krishna-Singh — Web Developer. Interactive portfolio with narrative scrolling, micro-interactions, and creative UX." />
+  <link rel="stylesheet" href="css/styles.css">
 </head>
-<body>
-    
+
+<body data-theme="dark" class="theme-hero">
+  <!-- Scroll progress (gamified) -->
+  <div id="progress" class="progress" aria-hidden="true"></div>
+
+  <!-- Custom cursor -->
+  <div id="cursor" class="cursor" aria-hidden="true"></div>
+
+  <!-- Header / Navbar -->
+  <header class="site-header" role="banner">
+    <div class="container header-grid">
+      <a class="logo" href="#hero">Krishna</a>
+
+      <nav id="mainNav" class="nav" role="navigation" aria-label="Main navigation">
+        <ul class="nav-list">
+          <li><a href="#hero">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+
+      <div class="controls">
+        <button id="themeToggle" class="icon-btn" aria-pressed="false" aria-label="Toggle theme">🌓</button>
+        <button id="menuToggle" class="icon-btn mobile-only" aria-expanded="false" aria-controls="mobileMenu" aria-label="Open menu">☰</button>
+      </div>
+    </div>
+
+    <!-- Mobile menu -->
+    <div id="mobileMenu" class="mobile-menu" hidden>
+      <ul>
+        <li><a href="#hero">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- HERO (typing, particles, reactive glow) -->
+    <section id="hero" class="section hero" aria-label="Hero">
+      <canvas id="particleCanvas" class="hero-canvas" aria-hidden="true"></canvas>
+      <div class="hero-inner container">
+        <div class="hero-left reveal">
+          <h1 class="title">Hi, I’m <span class="accent">Krishna</span></h1>
+          <h2 class="subtitle"><span id="typed" aria-live="polite"></span></h2>
+          <p class="lede muted">I build fast, accessible, and playful web experiences using HTML, CSS, and JavaScript.</p>
+
+          <div class="hero-cta">
+            <a class="btn primary magnetic" href="#projects">View Projects</a>
+            <a class="btn ghost magnetic" href="#contact">Contact Me</a>
+          </div>
+
+          <div class="hero-badges" aria-hidden="true">
+            <span class="badge">Performance</span>
+            <span class="badge">Accessibility</span>
+            <span class="badge">Building</span>
+          </div>
+        </div>
+
+        <div class="hero-right reveal">
+          <div class="headshot-card" role="img" aria-label="Workspace screenshot">
+            <img alt="Workspace screenshot" src="krishna_pic.jpeg">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT (timeline with moving node) -->
+    <section id="about" class="section about" aria-label="About">
+      <div class="container">
+        <h2 class="section-title reveal">My Journey</h2>
+        <p class="muted reveal">A short narrative of how I got here — designed as a readable scroll experience.</p>
+
+        <div class="about-grid reveal">
+          <div class="bio">
+            <p>I'm Krishna — A Fullstack Developer with hands-on experience in building scalable, user-centric web applications uisng Next.js, React, Node.js and MOngoDB. I thrive at the intersection of clean design and efficient architecture. My technical toolkit spans across Java, Javascript, Python and c, giving me the flexbility to tackle divserse challanges- from scripting automation to building full-fledged systems. I'm also deeply comfortable with Linux environments. I'm currently seeking opportunities  to bild impactful products, collaborate with forward-thinking teams, and keep pushing the boundries of fullstack environment.</p>
+
+            <h3>Skills</h3>
+            <ul class="skills">
+              <li>HTML • CSS • JavaScript • TypeScript • Rust</li>
+              <li>React• Java • Python • C • Bash</li>
+              <li>REST APi • MongoDB • Git & Github • SQL</li>
+              <li>Next.js • Node.js • pytorch • Linux</li>
+            </ul>
+          </div>
+
+          <div class="timeline-wrap">
+            <svg class="timeline-svg" viewBox="0 0 120 600" preserveAspectRatio="none" aria-hidden="true">
+              <path id="timelinePath" d="M60 0 V 600" stroke="url(#grad)" stroke-width="2" fill="none"></path>
+              <defs>
+                <linearGradient id="grad" x1="0" x2="0" y1="0" y2="1">
+                  <stop offset="0%" stop-color="#6af3bd"></stop>
+                  <stop offset="100%" stop-color="#8a63ff"></stop>
+                </linearGradient>
+              </defs>
+            </svg>
+
+            <div id="timelineNode" class="timeline-node" aria-hidden="true"></div>
+
+            <ol class="timeline-items">
+              <li class="timeline-item reveal"><strong>2023</strong> — Learned HTML, CSS, JavaScript basics.</li>
+              <li class="timeline-item reveal"><strong>2024</strong> — Built client projects and explored animations.</li>
+              <li class="timeline-item reveal"><strong>2025</strong> — Focus on performance, accessibility, and new SAAS.</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS (horizontal gallery, tilt, expand fullscreen) -->
+    <section id="projects" class="section projects" aria-label="Projects">
+      <div class="container">
+        <h2 class="section-title reveal">Selected Projects</h2>
+        <p class="muted reveal">Scroll sideways or use arrow keys. Click <em>Read</em> to open a quick case study.</p>
+
+        <div id="projectsRail" class="projects-rail reveal" tabindex="0" aria-label="Projects gallery" role="list">
+          <!-- project card -->
+          <article class="proj card" role="listitem" data-title="Analytics Dashboard">
+            <div class="proj-media">
+              <img alt="Analytics dashboard" src="https://images.unsplash.com/photo-1611162618071-b39a2ec9e4c8?q=80&w=1200&auto=format&fit=crop">
+            </div>
+            <div class="proj-body">
+              <h3>Analytics Dashboard</h3>
+              <p class="muted">A minimal analytics dashboard with keyboard-friendly charts.</p>
+              <div class="proj-tags"><span>HTML</span><span>CSS</span><span>JS</span></div>
+              <div class="proj-actions">
+                <a class="btn ghost" href="#" target="_blank" rel="noopener noreferrer">Live</a>
+                <a class="btn ghost" href="#" target="_blank" rel="noopener noreferrer">Code</a>
+                <button class="btn primary openCase">Read</button>
+              </div>
+            </div>
+          </article>
+
+          <article class="proj card" role="listitem" data-title="Portfolio Engine">
+            <div class="proj-media">
+              <img alt="Portfolio engine" src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?q=80&w=1200&auto=format&fit=crop">
+            </div>
+            <div class="proj-body">
+              <h3>Portfolio Engine</h3>
+              <p class="muted">Reusable portfolio template with theme and motion system.</p>
+              <div class="proj-tags"><span>HTML</span><span>CSS</span><span>JS</span></div>
+              <div class="proj-actions">
+                <a class="btn ghost" href="#" target="_blank" rel="noopener noreferrer">Live</a>
+                <a class="btn ghost" href="#" target="_blank" rel="noopener noreferrer">Code</a>
+                <button class="btn primary openCase">Read</button>
+              </div>
+            </div>
+          </article>
+
+          <article class="proj card" role="listitem" data-title="Shop Lite">
+            <div class="proj-media">
+              <img alt="E-commerce UI" src="https://images.unsplash.com/photo-1587825140400-9a18e1f5d2d6?q=80&w=1200&auto=format&fit=crop">
+            </div>
+            <div class="proj-body">
+              <h3>Shop Lite</h3>
+              <p class="muted">Minimal e-commerce front with accessible components.</p>
+              <div class="proj-tags"><span>HTML</span><span>CSS</span><span>JS</span></div>
+              <div class="proj-actions">
+                <a class="btn ghost" href="#" target="_blank" rel="noopener noreferrer">Live</a>
+                <a class="btn ghost" href="#" target="_blank" rel="noopener noreferrer">Code</a>
+                <button class="btn primary openCase">Read</button>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT (chat-style, optional Formspree) -->
+    <section id="contact" class="section contact" aria-label="Contact">
+      <div class="container">
+        <h2 class="section-title reveal">Let’s talk</h2>
+        <p class="muted reveal">Prefer email? <a href="mailto:workforkrishnasingh@gmail.com">workforkrishnasingh@gmail.com</a></p>
+
+        <div class="chat reveal" aria-live="polite">
+          <div class="bubble system">👋 Hey! What’s your name?</div>
+          <div class="bubble me" id="respName" hidden></div>
+
+          <div class="bubble system" id="qEmail" hidden>Nice to meet you — what’s your email?</div>
+          <div class="bubble me" id="respEmail" hidden></div>
+
+          <div class="bubble system" id="qMsg" hidden>What can I help you with?</div>
+          <div class="bubble me" id="respMsg" hidden></div>
+
+          <form id="chatForm" class="chat-form" action="#" method="POST">
+            <!-- To wire to Formspree: action="https://formspree.io/f/your-id" method="POST" -->
+            <label for="chatInput" class="sr-only">Message input</label>
+            <input id="chatInput" name="message" autocomplete="off" placeholder="Type and press Enter…" />
+            <button class="btn primary" type="submit">Send</button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- CASE STUDY MODAL -->
+  <div id="caseModal" class="modal" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="modal-sheet">
+      <button id="closeCase" class="icon-btn" aria-label="Close">✕</button>
+      <h3 id="caseTitle">Case study</h3>
+      <p id="caseContent" class="muted">Case study content</p>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div>© <span id="year"></span> Krishna-Singh</div>
+      <div class="footer-links">
+        <a href="#hero">Back to top</a>
+        <a href="#" rel="noopener noreferrer">GitHub</a>
+        <a href="#" rel="noopener noreferrer">LinkedIn</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js" defer></script>
 </body>
 </html>
