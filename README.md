@@ -28,3 +28,17 @@ It showcases projects, skills, achievements, and includes features like dark/lig
 ---
 
 ## 📂 Project Structure
+├── index.html # Main HTML file
+├── style.css # Styles and theme system
+├── theme.js # Theme toggle (light/dark with localStorage)
+├── script.js # Scroll animations & interactivity
+├── assets/ # Images, icons, certificates
+└── README.md # Project documentation
+
+
+---
+
+## 🚀 Getting Started
+1. Clone this repository:
+   ```bash
+   git clone https://github.com/Krishnasingh020/Krishnasingh020.github.io
