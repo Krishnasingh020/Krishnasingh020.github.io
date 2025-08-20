@@ -28,12 +28,12 @@ It showcases projects, skills, achievements, and includes features like dark/lig
 ---
 
 ## 📂 Project Structure
-├── index.html # Main HTML file 
-├── style.css # Styles and theme system
-├── theme.js # Theme toggle (light/dark with localStorage)
-├── script.js # Scroll animations & interactivity
-├── assets/ # Images, icons, certificates
-└── README.md # Project documentation
+index.html # Main HTML file <br>
+style.css # Styles and theme system <br>
+theme.js # Theme toggle (light/dark with localStorage)<br>
+script.js # Scroll animations & interactivity<br>
+assets/ # Images, icons, certificates<br>
+README.md # Project documentation
 
 
 ---
