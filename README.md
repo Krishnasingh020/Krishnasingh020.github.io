@@ -28,7 +28,7 @@ It showcases projects, skills, achievements, and includes features like dark/lig
 ---
 
 ## 📂 Project Structure
-├── index.html # Main HTML file
+├── index.html # Main HTML file 
 ├── style.css # Styles and theme system
 ├── theme.js # Theme toggle (light/dark with localStorage)
 ├── script.js # Scroll animations & interactivity
